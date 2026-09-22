@@ -30,7 +30,8 @@ class User extends Authenticatable
         'phone',
         'address',
         'password',
-        'role'
+        'role',
+        'email_verified_at'
     ];
 
     protected function casts(): array
