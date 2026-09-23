@@ -93,31 +93,32 @@
                 <p class="text-[#5B6D73] mt-3">Pilih jenis layanan sesuai kebutuhan cucianmu, harga transparan tanpa biaya tersembunyi.</p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div class="border border-[#DCE4E2] rounded-xl p-6">
-                    <span class="text-2xl">🧺</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Kering</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Cuci bersih dan pengeringan, cocok untuk pakaian harian.</p>
                     <p class="font-display font-bold mt-4">Rp7.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <button class="bg-[#2E6F7E] text-white p-1.5 rounded cursor-pointer mt-6">Pesan sekarang</button>
                 </div>
                 <div class="border border-[#DCE4E2] rounded-xl p-6">
-                    <span class="text-2xl">🧴</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Kering + Lipat</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Sudah dicuci, dikeringkan, dan dilipat rapi siap simpan.</p>
                     <p class="font-display font-bold mt-4">Rp9.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <button class="bg-[#2E6F7E] text-white p-1.5 rounded cursor-pointer mt-6">Pesan sekarang</button>
+
                 </div>
                 <div class="border border-[#DCE4E2] rounded-xl p-6">
-                    <span class="text-2xl">👔</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Setrika</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Dicuci, dikeringkan, dan disetrika rapi untuk baju kerja.</p>
                     <p class="font-display font-bold mt-4">Rp12.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <button class="bg-[#2E6F7E] text-white p-1.5 rounded cursor-pointer mt-6">Pesan sekarang</button>
+
                 </div>
-                <div class="border border-[#DCE4E2] rounded-xl p-6">
-                    <span class="text-2xl">👟</span>
+                {{-- <div class="border border-[#DCE4E2] rounded-xl p-6">
                     <h3 class="font-display font-semibold mt-4">Cuci Sepatu</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Pembersihan khusus sepatu, dicuci per pasang.</p>
                     <p class="font-display font-bold mt-4">Rp25.000<span class="text-sm font-normal text-[#5B6D73]">/pasang</span></p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
