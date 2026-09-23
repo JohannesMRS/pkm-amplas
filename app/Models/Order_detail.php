@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class OrderDetail extends Model
 {
+    protected $fillable = [
+        'id',
+        'user_id',
+        'product_id',
+        'quantity',
+        'price',
+        'subtotal'
+    ];
     public function products():BelongsTo{
         return $this->belongsTo(Product::class);
     }
