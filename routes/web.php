@@ -4,11 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
+use App\Http\Controllers\HomeController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('/');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,6 +24,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
 Route::middleware(['auth', 'role:customer'])->group(function(){
     Route::get('/customer/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+    
 });
 
 require __DIR__.'/auth.php';
