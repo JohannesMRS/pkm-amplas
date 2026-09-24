@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order_status_history extends Model
 {
+    protected $fillable = [
+        'id'
+    ];
     public function orders(): BelongsTo{
         return $this->belongsTo(Order::class);
     }
