@@ -59,6 +59,7 @@
                                     @foreach(['unpaid' => 'Belum Bayar', 'paid' => 'Lunas', 'refunded' => 'Dikembalikan'] as $value => $label)
                                         <option value="{{ $value }}" {{ $order->payment_status === $value ? 'selected' : '' }}>{{ $label }}</option>
                                     @endforeach
+                                    
                                 </select>
                             </form>
                         </td>

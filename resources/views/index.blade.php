@@ -31,7 +31,12 @@
 
             <div class="flex items-center gap-3">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-[#2E6F7E] text-white hover:bg-[#245A67]">Dashboard</a>
+                    {{-- <a href="{{ route('dashboard') }}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-[#2E6F7E] text-white hover:bg-[#245A67]">Dashboard</a> --}}
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-[#2E6F7E] text-white hover:bg-[#245A67]">Dashboard</a>
+                    @else
+                        <a href="{{ route('customer.dashboard') }}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-[#2E6F7E] text-white hover:bg-[#245A67]">Dashboard</a>
+                    @endif
                 @else
                     <a href="{{ route('login') }}" class="hidden sm:inline text-sm font-semibold text-[#3F4F55] hover:text-[#2E6F7E]">Masuk</a>
                     <a href="{{ route('register') }}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-[#D9781E] text-white hover:bg-[#C06A18]">Pesan Sekarang</a>
