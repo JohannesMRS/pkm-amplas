@@ -145,6 +145,13 @@ h1,h2,h3{
 .topbar .who{
     font-size:13px;
     color:var(--muted);
+    display: flex;
+    gap: 10px;
+}
+
+.topbar .who p{
+    margin-top: 5px;
+    font-size: 16px;
 }
 .wrap{
     padding:26px;

@@ -39,6 +39,8 @@
             <a href="{{ route('admin.employees.index') }}" class="navlink {{ request()->routeIs('admin.employees.index') ? 'active' : '' }}">Data Karyawan</a>
         </div>
 
+        
+
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit">Keluar</button>
@@ -48,7 +50,10 @@
     <div class="main">
         <div class="topbar">
             <h1 style="font-size:18px;">@yield('title')</h1>
-            <span class="who">{{ auth()->user()->name ?? 'Admin' }} · Laundry Amplas</span>
+            <span class="who">
+                <img src="{{ asset('images/user.svg') }}" alt="">
+                <p>{{ auth()->user()->name ?? 'Admin' }}</p>
+            </span>
         </div>
         @yield('content')
     </div>
