@@ -6,41 +6,52 @@ use App\Http\Controllers\Controller;
 use App\Models\Expense;
 use App\Models\Payment;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        [$totalIncome, $totalExpense, $paidPayments] = $this->summarize();
+        $month = $request->input('month', now()->format('Y-m'));
 
-        return view('admin.reports.index', compact('totalIncome', 'totalExpense', 'paidPayments'));
+        $data = $this->summarize($month);
+
+        return view('admin.reports.index', $data + ['month' => $month]);
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        [$totalIncome, $totalExpense, $paidPayments] = $this->summarize();
+        $month = $request->input('month', now()->format('Y-m'));
 
-        $pdf = Pdf::loadView('admin.reports.pdf', [
-            'totalIncome' => $totalIncome,
-            'totalExpense' => $totalExpense,
-            'paidPayments' => $paidPayments,
-            'periode' => Carbon::now()->translatedFormat('F Y'),
-        ]);
+        $data = $this->summarize($month);
 
-        return $pdf->download('laporan-keuangan-' . now()->format('Y-m') . '.pdf');
+        $pdf = Pdf::loadView('admin.reports.pdf', $data);
+
+        return $pdf->download('laporan-keuangan-' . $month . '.pdf');
     }
 
-    private function summarize(): array
+    private function summarize(string $month): array
     {
+        $start = Carbon::parse($month . '-01')->startOfMonth();
+        $end = $start->copy()->endOfMonth();
+
         $paidPayments = Payment::with('orders.user')
             ->whereNotNull('paid_at')
+            ->whereBetween('paid_at', [$start, $end])
             ->latest('paid_at')
             ->get();
 
-        $totalIncome = $paidPayments->sum('amount');
-        $totalExpense = Expense::sum('amount');
+        $expenses = Expense::whereBetween('created_at', [$start, $end])
+            ->latest()
+            ->get();
 
-        return [$totalIncome, $totalExpense, $paidPayments];
+        return [
+            'periode' => $start->translatedFormat('F Y'),
+            'totalIncome' => $paidPayments->sum('amount'),
+            'totalExpense' => $expenses->sum('amount'),
+            'paidPayments' => $paidPayments,
+            'expenses' => $expenses,
+        ];
     }
 }
