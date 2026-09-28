@@ -18,6 +18,7 @@
                     <th>Metode</th>
                     <th>Jumlah</th>
                     <th>Tgl Bayar</th>
+                    <th>Bukti</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -30,13 +31,20 @@
                         <td>Rp{{ number_format($payment->amount, 0, ',', '.') }}</td>
                         <td>{{ $payment->paid_at ? \Carbon\Carbon::parse($payment->paid_at)->translatedFormat('d M Y') : '—' }}</td>
                         <td>
+                            @if($payment->proof)
+                                <a href="{{ asset('storage/' . $payment->proof) }}" target="_blank" style="color:var(--primary);font-weight:600;">Lihat</a>
+                            @else
+                                —
+                            @endif
+                        </td>
+                        <td>
                             <span style="font-weight:700;color:var(--{{ $payment->orders->payment_status }})">
                                 {{ ['unpaid' => 'Belum Bayar', 'paid' => 'Lunas', 'refunded' => 'Dikembalikan'][$payment->orders->payment_status] }}
                             </span>
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:26px;">Belum ada pembayaran tercatat</td></tr>
+                    <tr><td colspan="7" style="text-align:center;color:var(--muted);padding:26px;">Belum ada pembayaran tercatat</td></tr>
                 @endforelse
             </tbody>
         </table>

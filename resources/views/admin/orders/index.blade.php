@@ -47,9 +47,22 @@
                         <td>{{ $order->orderDetails->pluck('products.name')->filter()->implode(', ') ?: '—' }}</td>
                         <td>{{ \Carbon\Carbon::parse($order->pickup_date)->translatedFormat('d M Y') }}</td>
                         <td>{{ $order->total_price ? 'Rp' . number_format($order->total_price, 0, ',', '.') : '—' }}</td>
-                        <td><span class="badge" data-s="{{ $order->status }}">
-                            {{ ['pending' => 'Pending', 'proccessing' => 'Diproses', 'ready' => 'Siap Diantar', 'completed' => 'Selesai', 'canceled' => 'Dibatalkan'][$order->status] }}
-                        </span></td>
+                        <td>
+                            @php
+                                $statusLabels = ['pending' => 'Pending', 'proccessing' => 'Diproses', 'ready' => 'Siap Diantar', 'completed' => 'Selesai', 'canceled' => 'Dibatalkan'];
+                                $statusColor = $order->status === 'proccessing' ? 'processing' : $order->status;
+                            @endphp
+                            <form method="POST" action="{{ route('admin.orders.updateStatus', $order) }}">
+                                @csrf
+                                @method('PATCH')
+                                <select name="status" onchange="this.form.submit()"
+                                    style="color:var(--{{ $statusColor }});font-weight:700;border-color:transparent;background:transparent;">
+                                    @foreach($statusLabels as $value => $label)
+                                        <option value="{{ $value }}" {{ $order->status === $value ? 'selected' : '' }}>{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </form>
+                        </td>
                         <td>
                             <form method="POST" action="{{ route('admin.orders.updatePaymentStatus', $order) }}">
                                 @csrf
@@ -59,7 +72,6 @@
                                     @foreach(['unpaid' => 'Belum Bayar', 'paid' => 'Lunas', 'refunded' => 'Dikembalikan'] as $value => $label)
                                         <option value="{{ $value }}" {{ $order->payment_status === $value ? 'selected' : '' }}>{{ $label }}</option>
                                     @endforeach
-                                    
                                 </select>
                             </form>
                         </td>

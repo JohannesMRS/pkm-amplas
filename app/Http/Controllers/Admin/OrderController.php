@@ -76,6 +76,47 @@ class OrderController extends Controller
 
         $order->update($validated);
 
+        if ($validated['payment_status'] === 'paid') {
+            // Catat pembayaran supaya masuk ke dashboard, halaman Pembayaran, dan laporan
+            $payment = $order->payments()->latest()->first();
+
+            if ($payment) {
+                // Sudah ada catatan (misalnya bukti transfer dari customer): tinggal dikonfirmasi
+                $payment->update([
+                    'amount' => $order->total_price,
+                    'paid_at' => $payment->paid_at ?? now(),
+                ]);
+            } else {
+                $order->payments()->create([
+                    'amount' => $order->total_price,
+                    'method' => 'cash', // default, karena dropdown tidak menanyakan metode
+                    'paid_at' => now(),
+                ]);
+            }
+        } else {
+            // Belum bayar / dikembalikan: hapus catatan pembayaran agar tidak dihitung sebagai pendapatan
+            $order->payments()->delete();
+        }
+
         return back()->with('status', "Status pembayaran {$order->order_numbers} diperbarui.");
+    }
+
+    // Admin mengubah status pesanan secara manual, sekaligus dicatat ke riwayat status
+    public function updateStatus(Request $request, Order $order)
+    {
+        $validated = $request->validate([
+            'status' => ['required', 'in:pending,proccessing,ready,completed,canceled'],
+        ]);
+
+        if ($order->status !== $validated['status']) {
+            $order->update($validated);
+
+            $order->order_status_histories()->create([
+                'status' => $validated['status'],
+                'changed_by' => auth()->id(),
+            ]);
+        }
+
+        return back()->with('status', "Status pesanan {$order->order_numbers} diperbarui.");
     }
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Admin\EmployeeController as AdminEmployeeController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
+use App\Http\Controllers\Customer\OrderController as CustomerOrderController;
+use App\Http\Controllers\Customer\AddressController as CustomerAddressController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -33,6 +35,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('/orders/{order}/process', [AdminOrderController::class, 'process'])->name('orders.process');
     Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
     Route::patch('/orders/{order}/payment-status', [AdminOrderController::class, 'updatePaymentStatus'])->name('orders.updatePaymentStatus');
+    Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
     // Keuangan
     Route::get('/payments', [AdminPaymentController::class, 'index'])->name('payments.index');
@@ -46,8 +49,23 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/employees', [AdminEmployeeController::class, 'index'])->name('employees.index');
 });
 
-Route::middleware(['auth', 'role:customer'])->group(function () {
-    Route::get('/customer/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer.')->group(function () {
+
+    Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
+
+    // Pesanan
+    Route::get('/orders', [CustomerOrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/create', [CustomerOrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [CustomerOrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{order}', [CustomerOrderController::class, 'show'])->name('orders.show');
+    Route::patch('/orders/{order}/cancel', [CustomerOrderController::class, 'cancel'])->name('orders.cancel');
+    Route::post('/orders/{order}/payment-proof', [CustomerOrderController::class, 'uploadPaymentProof'])->name('orders.paymentProof');
+
+    // Alamat
+    Route::get('/addresses', [CustomerAddressController::class, 'index'])->name('addresses.index');
+    Route::post('/addresses', [CustomerAddressController::class, 'store'])->name('addresses.store');
+    Route::patch('/addresses/{address}/primary', [CustomerAddressController::class, 'setPrimary'])->name('addresses.primary');
+    Route::delete('/addresses/{address}', [CustomerAddressController::class, 'destroy'])->name('addresses.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     protected $fillable = [
-        'id', 'order_numbers', 'user_id', 'status', 'total_price', 'paymentstatus', 'pickup_date', 'delivery_date', 'note'
+        'id', 'order_numbers', 'user_id', 'status', 'total_price', 'payment_status', 'pickup_date', 'delivery_date', 'note'
     ];
 
     public function user():BelongsTo{
