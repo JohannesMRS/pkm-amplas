@@ -32,7 +32,9 @@
                                 @csrf
                                 <select name="product_id" required>
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }} (Rp{{ number_format($product->price, 0, ',', '.') }}/{{ $product->unit }})</option>
+                                        <option value="{{ $product->id }}">
+                                            {{ $product->name }} (Rp{{ number_format($product->price, 0, ',', '.') }} / {{ config('laundry.min_weight') }}kg pertama, +Rp{{ number_format(config('laundry.extra_rate_per_kg'), 0, ',', '.') }}/kg selanjutnya)
+                                        </option>
                                     @endforeach
                                 </select>
                                 <input type="number" name="quantity" step="0.1" min="0.1" placeholder="Berat" style="width:80px;" required>

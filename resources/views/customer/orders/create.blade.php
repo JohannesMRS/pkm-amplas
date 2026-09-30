@@ -22,10 +22,13 @@
                 <select id="product_id" name="product_id" required>
                     @foreach($products as $product)
                         <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
-                            {{ $product->name }} (Rp{{ number_format($product->price, 0, ',', '.') }}/{{ $product->unit }})
+                            {{ $product->name }} (Rp{{ number_format($product->price, 0, ',', '.') }} untuk {{ config('laundry.min_weight') }}kg pertama)
                         </option>
                     @endforeach
                 </select>
+                <p style="font-size:12px;color:var(--muted);margin:4px 0 0;">
+                    Berlaku minimal {{ config('laundry.min_weight') }}kg. Kelebihan berat dikenai tambahan Rp{{ number_format(config('laundry.extra_rate_per_kg'), 0, ',', '.') }}/kg, dihitung otomatis setelah ditimbang kurir.
+                </p>
             </div>
 
             <div class="field">

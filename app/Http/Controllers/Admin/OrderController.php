@@ -31,12 +31,21 @@ class OrderController extends Controller
         ]);
 
         $product = Product::findOrFail($validated['product_id']);
-        $subtotal = $product->price * $validated['quantity'];
+        $quantity = $validated['quantity'];
+
+        $minWeight = config('laundry.min_weight');
+        $extraRate = config('laundry.extra_rate_per_kg');
+
+        // Harga dasar berlaku untuk berat sampai dengan min_weight (misal 7kg = Rp20.000),
+        // berat yang melebihi itu dikenai tarif tambahan per kg yang sama untuk semua layanan.
+        $subtotal = $quantity > $minWeight
+            ? $product->price + (($quantity - $minWeight) * $extraRate)
+            : $product->price;
 
         $order->orderDetails()->create([
             'user_id' => $order->user_id,
             'product_id' => $product->id,
-            'quantity' => $validated['quantity'],
+            'quantity' => $quantity,
             'price' => $product->price,
             'subtotal' => $subtotal,
         ]);
