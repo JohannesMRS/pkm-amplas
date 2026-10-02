@@ -14,7 +14,7 @@
 <body>
 <div class="layout">
     <div class="sidebar">
-        <a href="{{ route('customer.dashboard') }}" class="brand"><span>LK</span>Laundry Amplas</a>
+        <a href="{{ route('customer.dashboard') }}" class="brand"><span>LA</span>Laundry Amplas</a>
 
         <div class="navgroup">
             <a href="{{ route('customer.dashboard') }}" class="navlink {{ request()->routeIs('customer.dashboard') ? 'active' : '' }}">Dashboard</a>

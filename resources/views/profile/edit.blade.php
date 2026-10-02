@@ -1,29 +1,23 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.customer')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('title', 'Profil')
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+@section('content')
+    <div class="card">
+        <h3>Informasi Profil</h3>
+        <p class="desc">Perbarui nama, email, dan kontak akunmu.</p>
+        @include('profile.partials.update-profile-information-form')
     </div>
-</x-app-layout>
+
+    <div class="card">
+        <h3>Ubah Password</h3>
+        <p class="desc">Gunakan password yang panjang dan acak supaya akunmu tetap aman.</p>
+        @include('profile.partials.update-password-form')
+    </div>
+
+    <div class="card danger-zone">
+        <h3>Hapus Akun</h3>
+        <p class="desc">Setelah akun dihapus, seluruh data terkait tidak dapat dikembalikan. Pastikan sudah yakin sebelum melanjutkan.</p>
+        @include('profile.partials.delete-user-form')
+    </div>
+@endsection
