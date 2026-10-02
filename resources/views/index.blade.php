@@ -121,19 +121,15 @@
                 <p class="text-xs font-semibold uppercase tracking-wide text-[#5B6D73] mb-4">Perkiraan biaya layanan</p>
                 <div class="space-y-3">
                     <div class="flex justify-between items-center py-2 border-b border-[#EEF2F1]">
-                        <span class="text-sm font-medium">Cuci Kering <span class="text-[#5B6D73] font-normal">/ kg</span></span>
-                        <span class="font-display font-semibold">Rp7.000</span>
+                        <span class="text-sm font-medium">Cuci Kering <span class="text-[#5B6D73] font-normal">/7kg</span></span>
+                        <span class="font-display font-semibold">Rp15.000</span>
                     </div>
                     <div class="flex justify-between items-center py-2 border-b border-[#EEF2F1]">
-                        <span class="text-sm font-medium">Cuci Kering + Lipat <span class="text-[#5B6D73] font-normal">/ kg</span></span>
-                        <span class="font-display font-semibold">Rp9.000</span>
+                        <span class="text-sm font-medium">Cuci Kering + Lipat <span class="text-[#5B6D73] font-normal">/7kg</span></span>
+                        <span class="font-display font-semibold">Rp20.000</span>
                     </div>
                     <div class="flex justify-between items-center py-2 border-b border-[#EEF2F1]">
-                        <span class="text-sm font-medium">Cuci Setrika <span class="text-[#5B6D73] font-normal">/ kg</span></span>
-                        <span class="font-display font-semibold">Rp12.000</span>
-                    </div>
-                    <div class="flex justify-between items-center py-2">
-                        <span class="text-sm font-medium">Cuci Sepatu <span class="text-[#5B6D73] font-normal">/ pasang</span></span>
+                        <span class="text-sm font-medium">Cuci Setrika <span class="text-[#5B6D73] font-normal">/7kg</span></span>
                         <span class="font-display font-semibold">Rp25.000</span>
                     </div>
                 </div>
@@ -155,25 +151,20 @@
                     <span class="w-11 h-11 rounded-lg bg-[#E4EFF0] flex items-center justify-center text-xl">🧺</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Kering</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Cuci bersih dan pengeringan, cocok untuk pakaian harian.</p>
-                    <p class="font-display font-bold mt-4">Rp7.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <p class="font-display font-bold mt-4">Rp15.000<span class="text-sm font-normal text-[#5B6D73]">/7kg</span></p>
                 </div>
                 <div class="service-card reveal border border-[#DCE4E2] rounded-xl p-6">
                     <span class="w-11 h-11 rounded-lg bg-[#E4EFF0] flex items-center justify-center text-xl">🧴</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Kering + Lipat</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Sudah dicuci, dikeringkan, dan dilipat rapi siap simpan.</p>
-                    <p class="font-display font-bold mt-4">Rp9.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <p class="font-display font-bold mt-4">Rp20.000<span class="text-sm font-normal text-[#5B6D73]">/7kg</span></p>
                 </div>
                 <div class="service-card reveal border border-[#DCE4E2] rounded-xl p-6">
                     <span class="w-11 h-11 rounded-lg bg-[#E4EFF0] flex items-center justify-center text-xl">👔</span>
                     <h3 class="font-display font-semibold mt-4">Cuci Setrika</h3>
                     <p class="text-sm text-[#5B6D73] mt-2">Dicuci, dikeringkan, dan disetrika rapi untuk baju kerja.</p>
-                    <p class="font-display font-bold mt-4">Rp12.000<span class="text-sm font-normal text-[#5B6D73]">/kg</span></p>
+                    <p class="font-display font-bold mt-4">Rp25.000<span class="text-sm font-normal text-[#5B6D73]">/7kg</span></p>
                 </div>
-                {{-- <div class="border border-[#DCE4E2] rounded-xl p-6">
-                    <h3 class="font-display font-semibold mt-4">Cuci Sepatu</h3>
-                    <p class="text-sm text-[#5B6D73] mt-2">Pembersihan khusus sepatu, dicuci per pasang.</p>
-                    <p class="font-display font-bold mt-4">Rp25.000<span class="text-sm font-normal text-[#5B6D73]">/pasang</span></p>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -230,7 +221,7 @@
             <div>
                 <h4 class="text-white font-semibold text-sm mb-4">Kontak</h4>
                 <ul class="space-y-2 text-sm text-[#8FA0A4]">
-                    <li>Jl. Melati No. 12, Jakarta</li>
+                    <li>Amplas, Medan Denai</li>
                     <li>0812-3456-7890</li>
                     <li>halo@laundryAmplas.id</li>
                 </ul>
