@@ -46,6 +46,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     // Manajemen Pengguna
     Route::get('/customers', [AdminCustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers/{customer}', [AdminCustomerController::class, 'show'])->name('customers.show');
+    Route::get('/customers/{customer}/edit', [AdminCustomerController::class, 'edit'])->name('customers.edit');
+    Route::patch('/customers/{customer}', [AdminCustomerController::class, 'update'])->name('customers.update');
+    Route::patch('/customers/{customer}/toggle-active', [AdminCustomerController::class, 'toggleActive'])->name('customers.toggleActive');
     Route::get('/employees', [AdminEmployeeController::class, 'index'])->name('employees.index');
 });
 

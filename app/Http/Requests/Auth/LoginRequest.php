@@ -33,25 +33,34 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    /**
+        /**
      * Attempt to authenticate the request's credentials.
      *
-     * @throws ValidationException
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
+ 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
-
+ 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
-
+ 
+        if (! Auth::user()->is_active) {
+            Auth::logout();
+ 
+            throw ValidationException::withMessages([
+                'email' => 'Akun ini telah dinonaktifkan. Hubungi admin untuk informasi lebih lanjut.',
+            ]);
+        }
+ 
         RateLimiter::clear($this->throttleKey());
     }
+
 
     /**
      * Ensure the login request is not rate limited.
