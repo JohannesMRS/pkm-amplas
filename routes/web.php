@@ -54,8 +54,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Manajemen Karyawan
     Route::get('/employees', [AdminEmployeeController::class, 'index'])->name('employees.index');
     Route::get('/employees/{employee}', [AdminEmployeeController::class, 'show'])->name('employees.show');
-    Route::get('/employees/{employee}/edit', [AdminCustomerController::class, 'edit'])->name('employees.edit');
-    Route::patch('/employees/{employee}', [AdminCustomerController::class, 'update'])->name('employees.update');
+    Route::get('/employees/{employee}/edit', [AdminEmployeeController::class, 'edit'])->name('employees.edit');
+    Route::patch('/employees/{employee}', [AdminEmployeeController::class, 'update'])->name('employees.update');
 });
 
 Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer.')->group(function () {
