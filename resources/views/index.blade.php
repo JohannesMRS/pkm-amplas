@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laundry Amplas — Laundry Cepat, Bersih, Terpercaya</title>
+    <title>Laundry Berkah — Laundry Cepat, Bersih, Terpercaya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
         <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 font-display font-bold text-lg">
                 <span class="w-8 h-8 rounded-lg bg-[#2E6F7E] text-white flex items-center justify-center text-sm">LA</span>
-                Laundry Amplas
+                Laundry Berkah
             </a>
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#3F4F55]">
@@ -104,7 +104,7 @@
                     Cucian bersih, wangi, diantar tepat waktu ke depan pintumu.
                 </h1>
                 <p class="text-[#5B6D73] text-base md:text-lg mt-5 max-w-md">
-                    Laundry Amplas menjemput, mencuci, dan mengantar kembali cucianmu tanpa ribet. Tinggal pesan lewat aplikasi, sisanya biar kami yang urus.
+                    Laundry Berkah menjemput, mencuci, dan mengantar kembali cucianmu tanpa ribet. Tinggal pesan lewat aplikasi, sisanya biar kami yang urus.
                 </p>
                 <div class="flex flex-wrap gap-3 mt-8">
                     <a href="{{ route('register') }}" class="px-6 py-3 rounded-lg bg-[#2E6F7E] text-white font-semibold text-sm hover:bg-[#245A67] transition-colors hover:shadow-lg hover:shadow-[#2E6F7E]/20">Pesan Sekarang</a>
@@ -172,9 +172,9 @@
     {{-- Tentang Kami --}}
     <section id="tentang" class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
         <div class="reveal">
-            <h2 class="font-display text-3xl font-bold">Tentang Laundry Amplas</h2>
+            <h2 class="font-display text-3xl font-bold">Tentang Laundry Berkah</h2>
             <p class="text-[#5B6D73] mt-4 leading-relaxed">
-                Laundry Amplas hadir sejak 2021 untuk membantu warga sekitar mencuci pakaian tanpa buang waktu. Kami menjemput cucian dari rumahmu, mencucinya dengan deterjen berkualitas, lalu mengantarnya kembali sesuai jadwal.
+                Laundry Berkah hadir sejak 2021 untuk membantu warga sekitar mencuci pakaian tanpa buang waktu. Kami menjemput cucian dari rumahmu, mencucinya dengan deterjen berkualitas, lalu mengantarnya kembali sesuai jadwal.
             </p>
             <p class="text-[#5B6D73] mt-4 leading-relaxed">
                 Setiap pesanan bisa dipantau statusnya secara langsung, mulai dari dijemput, ditimbang, dicuci, sampai diantar kembali.
@@ -206,7 +206,7 @@
             <div>
                 <div class="flex items-center gap-2 font-display font-bold text-lg text-white">
                     <span class="w-8 h-8 rounded-lg bg-[#2E6F7E] flex items-center justify-center text-sm">LA</span>
-                    Laundry Amplas
+                    Laundry Berkah
                 </div>
                 <p class="text-sm mt-4 text-[#8FA0A4]">Laundry kiloan dan satuan dengan layanan jemput-antar untuk kebutuhan harianmu.</p>
             </div>
@@ -221,9 +221,9 @@
             <div>
                 <h4 class="text-white font-semibold text-sm mb-4">Kontak</h4>
                 <ul class="space-y-2 text-sm text-[#8FA0A4]">
-                    <li>Amplas, Medan Denai</li>
+                    <li>Berkah, Medan Denai</li>
                     <li>0812-3456-7890</li>
-                    <li>halo@laundryAmplas.id</li>
+                    <li>halo@laundryBerkah.id</li>
                 </ul>
             </div>
             <div>
@@ -236,7 +236,7 @@
             </div>
         </div>
         <div class="border-t border-white/10 py-5 text-center text-xs text-[#8FA0A4]">
-            © {{ date('Y') }} Laundry Amplas. Semua hak cipta dilindungi.
+            © {{ date('Y') }} Laundry Berkah. Semua hak cipta dilindungi.
         </div>
     </footer>
 
